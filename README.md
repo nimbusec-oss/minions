@@ -1,8 +1,7 @@
 # Minions
 
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/sprungknoedl/minions/blob/master/LICENSE)
-[![Go Report Card](https://goreportcard.com/badge/github.com/sprungknoedl/minions)](https://goreportcard.com/report/github.com/sprungknoedl/minions)
-[![Go Doc](https://godoc.org/github.com/sprungknoedl/minions?status.svg)](https://godoc.org/github.com/sprungknoedl/minions)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/nimbusec-oss/minions/blob/master/LICENSE)
+[![Go Doc](https://godoc.org/github.com/nimbusec-oss/minions?status.svg)](https://godoc.org/github.com/nimbusec-oss/minions)
 
 ## Overview
 Minions is a collection of utility functions for building Go web applications. 
@@ -17,5 +16,5 @@ Minions is a collection of utility functions for building Go web applications.
 ## Installation
 To install this package, run:
 ```
-go get github.com/sprungknoedl/minions
+go get github.com/nimbusec-oss/minions
 ```
