@@ -18,6 +18,10 @@ func JSON(w http.ResponseWriter, r *http.Request, code int, data interface{}) er
 	w.Header().Add("content-type", "application/json; charset=utf-8")
 	w.WriteHeader(code)
 
+	if data == nil {
+		return nil
+	}
+
 	enc := json.NewEncoder(w)
 	enc.SetIndent("", "\t")
 
@@ -29,6 +33,10 @@ func JSON(w http.ResponseWriter, r *http.Request, code int, data interface{}) er
 func XML(w http.ResponseWriter, r *http.Request, code int, data interface{}) error {
 	w.Header().Add("content-type", "application/xml; charset=utf-8")
 	w.WriteHeader(code)
+
+	if data == nil {
+		return nil
+	}
 
 	enc := xml.NewEncoder(w)
 	enc.Indent("", "\t")
