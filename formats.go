@@ -134,12 +134,14 @@ func (tpl Templates) HTML(w http.ResponseWriter, r *http.Request, code int, name
 	w.Header().Add("content-type", "text/html; charset=utf-8")
 	w.WriteHeader(code)
 
-	return tpl.Execute(w, name, data)
+	return tpl.Execute(w, name, data, nil)
 }
 
 // Execute outputs a rendered template to the Writer. If you want to stream
 // HTML to an ResponseWriter, use HTML(..) as it sets some required headers.
-func (tpl Templates) Execute(w io.Writer, name string, data interface{}) error {
+// ctxFuncs can be used to add functions to the cloned templates, so that
+// the original templates will not be changed (multi threading)
+func (tpl Templates) Execute(w io.Writer, name string, data interface{}, ctxFuncs template.FuncMap) error {
 	// reload templates in debug mode
 	if tpl.reload {
 		var err error
@@ -156,6 +158,7 @@ func (tpl Templates) Execute(w io.Writer, name string, data interface{}) error {
 	}
 
 	templates.Funcs(tpl.funcmap) // update funcmap
+	templates.Funcs(ctxFuncs)    // update funcmap
 	err = templates.ExecuteTemplate(w, name, data)
 	if err != nil {
 		return err
